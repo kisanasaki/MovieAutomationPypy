@@ -1,0 +1,14 @@
+services:
+  movie:
+    build: ./docker
+    volumes:
+      - ./app:/app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    working_dir: /app
+    tty: true
