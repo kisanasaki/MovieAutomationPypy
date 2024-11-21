@@ -18,5 +18,5 @@ https://blog.k-bushi.com/post/tech/ai/extract-text-from-video-or-audio-with-whis
 https://engineering.monstar-lab.com/jp/post/2023/12/08/Subtitling-with-Whisper/
 
 # コマンド
-docker comopse up -d
-docker exec -it automation-movie-1 bash
+- docker comopse up -d
+- docker exec -it automation-movie-1 bash
