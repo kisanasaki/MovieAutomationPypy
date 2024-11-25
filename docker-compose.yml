@@ -1,6 +1,7 @@
+version: '3.9'
 services:
   movie:
-    build: ./docker
+    build: ./docker/movie
     volumes:
       - ./app:/app
     deploy:
@@ -11,4 +12,20 @@ services:
               count: 1
               capabilities: [ gpu ]
     working_dir: /app
+    tty: true
+  webapi:
+    build: ./docker/webapi
+    volumes:
+      - ./webapi:/app
+    working_dir: /app
+    ports:
+      - 8080:8080
+    tty: true
+  webui:
+    build: ./docker/webui
+    volumes:
+      - ./webaui:/app
+    working_dir: /app
+    ports:
+      - 3000:3000
     tty: true
