@@ -1,6 +1,7 @@
+# ベースイメージを指定
 FROM nvidia/cuda:12.0.1-cudnn8-runtime-ubuntu20.04
-ENV DEBIAN_FRONTEND=noninteractive
 
+# 必要なシステムパッケージをインストール
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
@@ -15,8 +16,20 @@ RUN apt-get update \
         git \
         ffmpeg \
         portaudio19-dev \
-        && pip install pip -U
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /root/
-RUN pip install git+https://github.com/openai/whisper.git
-RUN pip install -r /root/requirements.txt
+# pipのアップグレード
+RUN pip install --no-cache-dir --upgrade pip
+
+# Whisperライブラリをインストール
+RUN pip install --no-cache-dir git+https://github.com/openai/whisper.git
+
+# requirements.txt をコンテナにコピー
+COPY ./docker/movie/requirements.txt .
+
+# Python依存関係をインストール
+RUN pip install --no-cache-dir -r requirements.txt
+
+# コンテナが実行されたときのデフォルトのコマンドを設定（必要に応じて追加）
+CMD ["bash"]

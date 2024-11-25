@@ -1,7 +1,9 @@
 version: '3.9'
 services:
   movie:
-    build: ./docker/movie
+    build: 
+      context: .
+      dockerfile: ./docker/movie/Dockerfile
     volumes:
       - ./app:/app
     deploy:
@@ -14,7 +16,9 @@ services:
     working_dir: /app
     tty: true
   webapi:
-    build: ./docker/webapi
+    build:
+      context: .
+      dockerfile: ./docker/webapi/Dockerfile
     volumes:
       - ./webapi:/app
     working_dir: /app
@@ -22,10 +26,11 @@ services:
       - 8080:8080
     tty: true
   webui:
-    build: ./docker/webui
+    build: 
+      context: .
+      dockerfile: ./docker/react/Dockerfile
     volumes:
-      - ./webaui:/app
-    working_dir: /app
+      - ./react:/app
     ports:
       - 3000:3000
     tty: true
