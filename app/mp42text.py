@@ -10,8 +10,8 @@ model = "large-v3-turbo"
 model = whisper.load_model(model)
 
 # 文字起こし
-result = model.transcribe(video_path, language='japanese', verbose=True,word_timestamps=True)
+segments = model.transcribe(video_path, language='japanese', verbose=True,word_timestamps=True)
 
 # srt字幕ファイル出力
 writer = get_writer("txt", "./content/telop")
-writer(result, "./telop.txt")
+writer(segments, "./telop.txt")

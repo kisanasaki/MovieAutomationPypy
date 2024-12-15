@@ -15,22 +15,22 @@ services:
               capabilities: [ gpu ]
     working_dir: /app
     tty: true
-  webapi:
-    build:
-      context: .
-      dockerfile: ./docker/webapi/Dockerfile
-    volumes:
-      - ./webapi:/app
-    working_dir: /app
-    ports:
-      - 8080:8080
-    tty: true
-  webui:
-    build: 
-      context: .
-      dockerfile: ./docker/react/Dockerfile
-    volumes:
-      - ./react:/app
-    ports:
-      - 3000:3000
-    tty: true
+  # webapi: 
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/webapi/Dockerfile_fastapi
+  #   volumes:
+  #     - ./webapi:/app
+  #   working_dir: /app
+  #   ports:
+  #     - 8080:8080
+  #   tty: true
+  # webui:
+  #   build: 
+  #     context: .
+  #     dockerfile: ./docker/react/Dockerfile
+  #   volumes:
+  #     - ./react:/app
+  #   ports:
+  #     - 3000:3000
+  #   tty: true

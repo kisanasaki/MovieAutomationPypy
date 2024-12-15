@@ -1,7 +1,7 @@
 # 編集ソフトAviUtl専用(exoファイル)　自動字幕プログラム
 
 #ローカルの場合はターミナルで下記のコマンドでwhisper(文字起こしソフト)をダウンロード
-!pip install git+https://github.com/openai/whisper.git
+# !pip install git+https://github.com/openai/whisper.git
 import os
 import subprocess
 import whisper
